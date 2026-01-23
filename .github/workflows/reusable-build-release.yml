@@ -59,7 +59,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest]
+        os: [windows-latest]
 
     steps:
       - uses: actions/checkout@v4
@@ -99,27 +99,6 @@ jobs:
 
           New-Item -ItemType Directory -Force -Path out | Out-Null
           Copy-Item $exePath "out\$Safe.exe" -Force
-
-      - name: Build Linux binary
-        if: runner.os == 'Linux'
-        shell: bash
-        run: |
-          set -euo pipefail
-          PRETTY="${{ inputs.app_name }}"
-          SAFE="$(echo "$PRETTY" | sed -E 's/[^A-Za-z0-9._-]/_/g')"
-
-          pyinstaller --onefile --name "$SAFE" "${{ inputs.main_py_file }}"
-
-          if [ ! -f "dist/$SAFE" ]; then
-            echo "Expected dist/$SAFE not found"
-            echo "dist/ contains:"
-            ls -la dist || true
-            exit 1
-          fi
-
-          mkdir -p out
-          cp "dist/$SAFE" "out/$SAFE"
-          chmod +x "out/$SAFE"
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
