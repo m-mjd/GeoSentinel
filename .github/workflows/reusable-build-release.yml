@@ -59,11 +59,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # Option A: only windows-latest (uncomment if you prefer only Windows)
-        # os: [windows-latest]
-
-        # Option B: both (lower memory usage due to directory builds)
-        os: [windows-latest, ubuntu-latest]
+        # Build only on Windows
+        os: [windows-latest]
 
     steps:
       - uses: actions/checkout@v4
@@ -107,27 +104,6 @@ jobs:
           $zipPath = "out\$Safe.zip"
           if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
           Compress-Archive -Path "$distDir\*" -DestinationPath $zipPath -Force
-
-      - name: Build Linux (directory build, archived)
-        if: runner.os == 'Linux'
-        shell: bash
-        run: |
-          set -euo pipefail
-          PRETTY="${{ inputs.app_name }}"
-          SAFE="$(echo "$PRETTY" | sed -E 's/[^A-Za-z0-9._-]/_/g')"
-
-          # Use directory build (no --onefile) to reduce memory usage
-          pyinstaller --name "$SAFE" "${{ inputs.main_py_file }}"
-
-          if [ ! -d "dist/$SAFE" ]; then
-            echo "Expected dist/$SAFE not found"
-            echo "dist/ contains:"
-            ls -la dist || true
-            exit 1
-          fi
-
-          mkdir -p out
-          tar -C dist -czf "out/$SAFE.tar.gz" "$SAFE"
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
