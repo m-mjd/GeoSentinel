@@ -200,7 +200,15 @@ Donate via Monero: `45PU6txuLxtFFcVP95qT2xXdg7eZzPsqFfbtZp5HTjLbPquDAugBKNSh1bJ7
 
 [<img src="https://avatars.githubusercontent.com/u/67865621?s=64&v=4" width="64" height="64" alt="haybnzz">](https://github.com/h9zdev)  
 
+## Star History
 
+<a href="https://www.star-history.com/#h9zdev/GeoSentinel&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=h9zdev/GeoSentinel&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=h9zdev/GeoSentinel&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=h9zdev/GeoSentinel&type=date&legend=top-left" />
+ </picture>
+</a>
 
 
 If you use NeuroTumorNet in your research, please cite:
