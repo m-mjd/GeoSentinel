@@ -1,4 +1,8 @@
 # 🌍 GeoSentinel
+<p align="center">
+  <img src="https://raw.githubusercontent.com/h9zdev/GeoSentinel/main/images/GeoSentinel.png" alt="GeoSentinel" />
+</p>
+
 
 **GeoSentinel** is a geospatial monitoring platform that tracks global movement in real time.
 
