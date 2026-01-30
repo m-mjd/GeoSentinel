@@ -9,8 +9,8 @@
 It aggregates ship and flight routes, live coordinates, and geodata into a unified system, providing clear geographic and geopolitical awareness for analysis, visualization, and decision-making.
 . 🚀
 
-🚀 Visit Blog: [haybnz.web.app](https://haybnz.web.app/blog)
-
+🚀 Visit Blog: [VaradScript.web.app](https://varadaraj.online/)
+⁨![Profile Views](https://komarev.com/ghpvc/?username=VaradScript&label=Profile%20Views&color=0e75b6&style=flat)⁩
 ## 🌟 Features
 
 -   🗺️ Access to GeoJSON data and surveillance grid tiles.
