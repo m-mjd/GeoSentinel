@@ -11,6 +11,13 @@ It aggregates ship and flight routes, live coordinates, and geodata into a unifi
 
 🚀 Visit Blog: [haybnz.web.app](https://haybnz.web.app/blog)
 
+> 🔴 **NOTE:**  
+> <span style="color:red;">Get Updates on the Latest Geo Sentinel AI Releases</span>  
+>  
+> 👉 Subscribe here:  
+> https://docs.google.com/forms/d/e/1FAIpQLSe3qBh6r1orih2MkLf5DjdolX0jv5Abct02363lLxpXEute-Q/viewform?usp=header
+
+
 ## 🌟 Features
 
 -   🗺️ Access to GeoJSON data and surveillance grid tiles.
