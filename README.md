@@ -9,16 +9,21 @@
 It aggregates ship and flight routes, live coordinates, and geodata into a unified system, providing clear geographic and geopolitical awareness for analysis, visualization, and decision-making.
 . 🚀
 
-🚀 Visit Blog: [VaradScript.web.app](https://varadaraj.online/)
-⁨![Profile Views](https://komarev.com/ghpvc/?username=VaradScript&label=Profile%20Views&color=0e75b6&style=flat)⁩
-🚀 Visit Blog: [haybnz.web.app](https://haybnz.web.app/blog)
+🚀 **Visit the Blog:**  
+👉 https://haybnz.web.app/blog
 
-> 🔴 **NOTE:**  
-> <span style="color:red;">Get Updates on the Latest Geo Sentinel AI Releases</span>  
->  
-> 👉 Subscribe here:  
-> https://docs.google.com/forms/d/e/1FAIpQLSe3qBh6r1orih2MkLf5DjdolX0jv5Abct02363lLxpXEute-Q/viewform?usp=header
+🚀 **Visit the Blog:**  
+👉 https://varadaraj.online/
 
+![Profile Views](https://komarev.com/ghpvc/?username=VaradScript&label=Profile%20Views&color=0e75b6&style=flat)
+
+---
+
+🔴 **NOTE**  
+Stay updated with the latest **Geo Sentinel AI** releases and announcements.
+
+👉 **Subscribe here:**  
+https://docs.google.com/forms/d/e/1FAIpQLSe3qBh6r1orih2MkLf5DjdolX0jv5Abct02363lLxpXEute-Q/viewform
 
 ## 🌟 Features
 
