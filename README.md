@@ -1,8 +1,17 @@
 # 🌍 GeoSentinel
+
+<div align="center">
+
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python)](https://www.python.org/)
+[![Linux](https://img.shields.io/badge/Linux-Tested-green?style=for-the-badge&logo=linux)](https://www.linux.org/)
+[![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen?style=for-the-badge)](https://github.com/h9zdev/GeoSentinel)
+[![GeoSentinel](https://img.shields.io/badge/GeoSentinel-Active-red?style=for-the-badge)](https://github.com/h9zdev/GeoSentinel)
+
+</div>
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/h9zdev/GeoSentinel/main/images/GeoSentinel.png" alt="GeoSentinel" />
 </p>
-
 
 **GeoSentinel** is a geospatial monitoring platform that tracks global movement in real time.
 
@@ -15,7 +24,6 @@ It aggregates ship and flight routes, live coordinates, and geodata into a unifi
 🚀 **Visit the Blog:**  
 👉 https://varadaraj.online/
 
-![Profile Views](https://komarev.com/ghpvc/?username=VaradScript&label=Profile%20Views&color=0e75b6&style=flat)
 
 ---
 
@@ -35,6 +43,17 @@ https://docs.google.com/forms/d/e/1FAIpQLSe3qBh6r1orih2MkLf5DjdolX0jv5Abct02363l
 -   📰 Geopolitical news and sentiment analysis.
 -   💹 Market data for commodities and cryptocurrencies.
 -   🌐 Translation services.
+-   🔒 TOR integration for enhanced privacy.
+-   🤖 OLLAMA AI integration for local LLM processing.
+
+### 🌍 Earth HTML Features
+-   Interactive global map with real-time tracking
+-   Advanced search capabilities (HEX, flight, vessel, coordinates)
+-   TomTom Maps API integration for detailed mapping
+-   Activity logging and user tracking
+-   Responsive design for all devices
+-   GPS metadata extraction from images
+-   Real-time data visualization
 -   
 ###    📦 Download and Move `geodata` Folder to Root Directory
 
@@ -96,6 +115,196 @@ python app.py
 
 - Earth View  
   https://127.0.0.1:8000/earth
+
+- News Dashboard
+  https://127.0.0.1:8000/news
+
+---
+
+## 🔒 TOR Installation & Setup (Linux)
+
+### Option 1: Install TOR from Package Manager
+```bash
+# Ubuntu/Debian
+sudo apt-get update
+sudo apt-get install tor torbrowser-launcher -y
+
+# Fedora/RHEL
+sudo dnf install tor torbrowser-launcher -y
+```
+
+### Option 2: Install TOR from Source
+```bash
+# Download TOR
+cd /tmp
+wget https://archive.torproject.org/tor-package-archive/tor-latest.tar.gz
+tar -xzf tor-latest.tar.gz
+cd tor-*
+
+# Compile and install
+./configure
+make
+sudo make install
+```
+
+### Start TOR Service
+```bash
+# Start TOR daemon
+sudo systemctl start tor
+sudo systemctl enable tor  # Enable on boot
+
+# Or run manually
+tor
+
+# Verify TOR is running
+curl --socks5 127.0.0.1:9050 https://check.torproject.org/api/ip
+```
+
+### Configure TOR in GeoSentinel
+Add to your Python code for TOR support:
+```python
+import requests
+from requests.adapters import HTTPAdapter
+from stem import Signal
+from stem.control import Controller
+
+# SOCKS5 proxy configuration
+proxies = {
+    'http': 'socks5://127.0.0.1:9050',
+    'https': 'socks5://127.0.0.1:9050'
+}
+
+# Make request through TOR
+response = requests.get('https://api.example.com', proxies=proxies)
+```
+
+---
+
+## 🤖 OLLAMA Installation & Setup
+
+### Installation Steps
+
+#### Step 1: Download OLLAMA
+```bash
+# macOS
+curl -fsSL https://ollama.ai/install.sh | sh
+
+# Linux
+curl -fsSL https://ollama.ai/install.sh | sh
+
+# Or download from
+https://ollama.ai/download
+```
+
+#### Step 2: Verify Installation
+```bash
+ollama --version
+```
+
+#### Step 3: Pull a Model
+```bash
+# Pull Llama 2 model (7B parameters)
+ollama pull llama2
+
+# Or pull other models
+ollama pull mistral      # Mistral model
+ollama pull neural-chat  # Neural Chat model
+ollama pull orca-mini    # Orca Mini model
+```
+
+#### Step 4: Run OLLAMA Server
+```bash
+# Start OLLAMA server (runs on localhost:11434)
+ollama serve
+```
+
+#### Step 5: Test OLLAMA
+```bash
+# In another terminal, test the API
+curl http://localhost:11434/api/generate -d '{
+  "model": "llama2",
+  "prompt": "Why is the sky blue?"
+}'
+```
+
+### Python Integration with GeoSentinel
+```python
+import requests
+import json
+
+def query_ollama(prompt, model="llama2"):
+    """Query OLLAMA local LLM"""
+    url = "http://localhost:11434/api/generate"
+    
+    payload = {
+        "model": model,
+        "prompt": prompt,
+        "stream": False
+    }
+    
+    response = requests.post(url, json=payload)
+    if response.status_code == 200:
+        return response.json()['response']
+    return None
+
+# Usage example
+response = query_ollama("Analyze the geopolitical implications of...")
+print(response)
+```
+
+### Common OLLAMA Commands
+```bash
+# List installed models
+ollama list
+
+# Remove a model
+ollama rm llama2
+
+# Run model interactively
+ollama run llama2
+
+# Set custom parameters
+ollama run llama2 --temperature 0.5 --top_k 10
+```
+
+---
+
+## 📝 Configuration
+
+### API Keys Required
+- **TomTom Maps API**: Add your key in `templates/earth.html` (line ~1850)
+  ```javascript
+  const tomtomApiKey = 'YOUR_TOMTOM_API_KEY';
+  ```
+
+- **Other APIs**: Add relevant API keys in `app.py`
+
+---
+
+## 🚀 Advanced Usage
+
+### With TOR + OLLAMA
+```python
+import requests
+from stem.control import Controller
+import json
+
+# Configure TOR
+proxies = {
+    'http': 'socks5://127.0.0.1:9050',
+    'https': 'socks5://127.0.0.1:9050'
+}
+
+# Query OLLAMA through TOR (for privacy-focused analysis)
+response = requests.post(
+    'http://localhost:11434/api/generate',
+    json={"model": "llama2", "prompt": "Analyze geopolitical data"},
+    proxies=proxies,
+    timeout=30
+)
+```
+
+---
 
 - News Dashboard  
   https://127.0.0.1:8000/news
