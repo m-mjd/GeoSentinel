@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  geosentinel:
+    build: .
+    container_name: geosentinel_app
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      # اتصال پوشه geodata دانلود شده به داخل کانتینر
+      - ./geodata:/app/geodata
+      # اتصال فایل کانفیگ یا تمپلیت‌ها برای تغییر API Key بدون بیلد مجدد (اختیاری)
+      - ./templates:/app/templates
+    environment:
+      # اگر پروژه از متغیر محیطی پشتیبانی کند اینجا ست کنید
+      - FLASK_ENV=production
+    # اگر نیاز به دسترسی به Ollama روی سیستم خودتان دارید:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # (اختیاری) سرویس Tor جداگانه، اگر اپلیکیشن بتواند به پروکسی وصل شود
+  tor-proxy:
+    image: osminogin/tor-simple
+    container_name: tor_service
+    ports:
+      - "8000:8000"
+    restart: always
