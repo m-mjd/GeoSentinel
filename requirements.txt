@@ -9,3 +9,5 @@ ollama
 gTTS
 pysocks
 stem
+beautifulsoup4
+duckduckgo-search
